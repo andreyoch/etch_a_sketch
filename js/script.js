@@ -1,29 +1,36 @@
 document.addEventListener('DOMContentLoaded', main);
 
 let elementColor = 'black';
+const pickColorArea = document.querySelector('#color-picker');
 
 function main() {
-  createGrid();
-  listenRandomButton();
-  listenResetButton();
-  listenEraseButton();
-  listenPickColorButton();
+  createGrid(16);
+  listenButtons();
   startDraw();
 }
 
-function createGrid() {
+function createGrid(greedSize) {
   const table = document.querySelector('.grid');
-  for (let i = 0; i < 16; i++) {
+  for (let i = 0; i < greedSize; i++) {
     const tableRow = document.createElement('div');
     tableRow.classList.add('row');
     table.append(tableRow);
 
-    for (let j = 0; j < 16; j++) {
+    for (let j = 0; j < greedSize; j++) {
       const element = document.createElement('div');
       element.classList.add('element');
+      // element.style.height = `${greedSize}px`;
+      // element.style.width = `${greedSize}px`;
       tableRow.append(element);
     }
   }
+}
+
+function listenButtons() {
+  listenRandomButton();
+  listenResetButton();
+  listenEraseButton();
+  listenPickColorButton();
 }
 
 function listenRandomButton() {
@@ -35,8 +42,7 @@ function listenResetButton() {
 
   resetButton.addEventListener('click', (e) => {
     elementColor = 'green';
-     const elements = document.querySelectorAll('.element');
-     const pickedColor = document.querySelector('#color-picker').value
+    const elements = document.querySelectorAll('.element');
     elements.forEach((element) => (element.style.backgroundColor = 'white'));
   });
 }
@@ -61,14 +67,25 @@ function pickRandomColor() {
   const red = Math.floor(Math.random(0, 256) * 256);
   const green = Math.floor(Math.random(0, 256) * 256);
   const blue = Math.floor(Math.random(0, 256) * 256);
-  console.log(red, green, blue);
   elementColor = `rgb(${red},${green},${blue})`;
 }
 
 function listenPickColorButton() {
-   const pickColorButton = document.querySelector('#pick-color');
-   pickColorButton.addEventListener('click', (e) => {
-      const pickedColor = document.querySelector('#color-picker').value;
-      elementColor = pickedColor;
-   })
+  const pickColorArea = document.querySelector('#color-picker');
+  pickColorArea.addEventListener('mouseleave', (e) => {
+    elementColor = pickColorArea.value;
+  });
 }
+
+// function showRange() {
+//   const gridSize = document.querySelector('#grid-size');
+//   const range = document.querySelector('#range');
+//   gridSize.textContent = `Grid size is ${range.value} x ${range.value}`;
+//   deleteGrid();
+//   createGrid(range.value);
+// }
+
+// function deleteGrid() {
+//   const elements = document.querySelectorAll('.element');
+//   elements.forEach((element) => element.remove());
+// }
