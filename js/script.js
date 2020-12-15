@@ -4,6 +4,7 @@ let elementColor = 'rgb(0,255,255)';
 
 function main() {
   createGrid();
+  listenRandomButton();
   listenResetButton();
   startDraw();
 }
@@ -25,8 +26,7 @@ function createGrid() {
 
 function listenRandomButton() {
   const randomButton = document.querySelector('#random');
-  randomButton.addEventListener('click', pickRandomColor )
-  
+  randomButton.addEventListener('click', pickRandomColor);
 }
 function listenResetButton() {
   const resetButton = document.querySelector('#reset');
@@ -38,7 +38,6 @@ function listenResetButton() {
 }
 
 function startDraw() {
-  listenRandomButton();
   const elements = document.querySelectorAll('.element');
   elements.forEach((element) =>
     element.addEventListener('mouseenter', (e) => {
@@ -48,10 +47,9 @@ function startDraw() {
 }
 
 function pickRandomColor() {
-   const red = Math.floor(Math.random(0, 256) * 256);
-   const green = Math.floor(Math.random(0, 256) * 256);
-   const blue = Math.floor(Math.random(0, 256) * 256);
-   console.log(red, green, blue)
-    elementColor = `rgb(${red},${green},${blue})`
+  const red = Math.floor(Math.random(0, 256) * 256);
+  const green = Math.floor(Math.random(0, 256) * 256);
+  const blue = Math.floor(Math.random(0, 256) * 256);
+  console.log(red, green, blue);
+  elementColor = `rgb(${red},${green},${blue})`;
 }
-
