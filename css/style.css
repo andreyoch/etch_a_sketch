@@ -2,15 +2,21 @@ html{
    box-sizing: border-box;
 }
 
+
 .content {
    max-width: 960px;
+   display: flex;
    margin: 0 auto;
+   
 }
+
 
 .button-row {
    display: flex;
    flex-grow: 1;
    justify-content: center;
+   flex-direction: column;
+   
 }
 
 .buttons {
@@ -30,6 +36,7 @@ color: white;
 
 .header {
    text-align: center;
+   
 }
 
 .grid {
@@ -38,7 +45,7 @@ color: white;
    display: flex;
    flex-direction: column;
    justify-content: center;
-   margin: 1px;
+   margin: 11px;
    
    
 }

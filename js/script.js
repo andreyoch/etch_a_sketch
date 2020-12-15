@@ -1,11 +1,13 @@
 document.addEventListener('DOMContentLoaded', main);
 
-let elementColor = 'rgb(0,255,255)';
+let elementColor = 'black';
 
 function main() {
   createGrid();
   listenRandomButton();
   listenResetButton();
+  listenEraseButton();
+  listenPickColorButton();
   startDraw();
 }
 
@@ -32,8 +34,17 @@ function listenResetButton() {
   const resetButton = document.querySelector('#reset');
 
   resetButton.addEventListener('click', (e) => {
-    const elements = document.querySelectorAll('.element');
+    elementColor = 'green';
+     const elements = document.querySelectorAll('.element');
+     const pickedColor = document.querySelector('#color-picker').value
     elements.forEach((element) => (element.style.backgroundColor = 'white'));
+  });
+}
+
+function listenEraseButton() {
+  const eraseButton = document.querySelector('#erase');
+  eraseButton.addEventListener('click', (e) => {
+    elementColor = 'white';
   });
 }
 
@@ -52,4 +63,12 @@ function pickRandomColor() {
   const blue = Math.floor(Math.random(0, 256) * 256);
   console.log(red, green, blue);
   elementColor = `rgb(${red},${green},${blue})`;
+}
+
+function listenPickColorButton() {
+   const pickColorButton = document.querySelector('#pick-color');
+   pickColorButton.addEventListener('click', (e) => {
+      const pickedColor = document.querySelector('#color-picker').value;
+      elementColor = pickedColor;
+   })
 }
