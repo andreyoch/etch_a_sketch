@@ -42,25 +42,16 @@ html {
    text-align: center;
 }
 .grid {
-  max-height: 960px;
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  overflow: hidden;
+  width: 960px;
+  display: grid;
+  height: 960px;
   
 }
 
-.row {
-  display: flex;
-  justify-content: center;
-}
+
 
 .element {
-  height: 50px;
-  width: 50px; 
-  border: 1px solid black;
-
+  border: 0.5px solid black;
 }
 
 

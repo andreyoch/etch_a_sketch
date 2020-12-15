@@ -6,24 +6,19 @@ const pickColorArea = document.querySelector('#color-picker');
 function main() {
   createGrid(16);
   listenButtons();
-  startDraw();
+  const range = document.querySelector('#range');
+  range.value = 16;
 }
 
 function createGrid(greedSize) {
   const table = document.querySelector('.grid');
-  for (let i = 0; i < greedSize; i++) {
-    const tableRow = document.createElement('div');
-    tableRow.classList.add('row');
-    table.append(tableRow);
-
-    for (let j = 0; j < greedSize; j++) {
-      const element = document.createElement('div');
-      element.classList.add('element');
-      // element.style.height = `${greedSize}px`;
-      // element.style.width = `${greedSize}px`;
-      tableRow.append(element);
-    }
+  table.style = `grid-template-columns: repeat(${greedSize},1fr);`;
+  for (let i = 0; i < greedSize * greedSize; i++) {
+    const element = document.createElement('div');
+    element.classList.add('element');
+    table.append(element);
   }
+  startDraw();
 }
 
 function listenButtons() {
@@ -77,15 +72,21 @@ function listenPickColorButton() {
   });
 }
 
-// function showRange() {
-//   const gridSize = document.querySelector('#grid-size');
-//   const range = document.querySelector('#range');
-//   gridSize.textContent = `Grid size is ${range.value} x ${range.value}`;
-//   deleteGrid();
-//   createGrid(range.value);
-// }
+function deleteGrid() {
+  const elements = document.querySelectorAll('.element');
+  elements.forEach((element) => element.remove());
+}
 
-// function deleteGrid() {
-//   const elements = document.querySelectorAll('.element');
-//   elements.forEach((element) => element.remove());
-// }
+function setRange() {
+  const gridSizeText = document.querySelector('#grid-size');
+  const gridSizeRange = document.querySelector('#range');
+  gridSizeText.textContent = `Grid size ${gridSizeRange.value} x ${gridSizeRange.value}`;
+  deleteGrid();
+  createGrid(gridSizeRange.value);
+}
+
+function showRange() {
+  const gridSizeText = document.querySelector('#grid-size');
+  const gridSizeRange = document.querySelector('#range');
+  gridSizeText.textContent = `Grid size  ${gridSizeRange.value} x ${gridSizeRange.value}`;
+}
