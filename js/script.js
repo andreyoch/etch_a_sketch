@@ -1,9 +1,11 @@
 document.addEventListener('DOMContentLoaded', main);
 
+let elementColor = 'rgb(0,255,255)';
+
 function main() {
   createGrid();
   listenResetButton();
-   startDraw();
+  startDraw();
 }
 
 function createGrid() {
@@ -21,31 +23,35 @@ function createGrid() {
   }
 }
 
+function listenRandomButton() {
+  const randomButton = document.querySelector('#random');
+  randomButton.addEventListener('click', pickRandomColor )
+  
+}
 function listenResetButton() {
   const resetButton = document.querySelector('#reset');
 
   resetButton.addEventListener('click', (e) => {
     const elements = document.querySelectorAll('.element');
-    elements.forEach((element) => element.classList.remove('active'));
+    elements.forEach((element) => (element.style.backgroundColor = 'white'));
   });
 }
 
-// function activateGrid() {
-//   const table = document.querySelector('.grid');
-//    table.addEventListener('click', startDraw);
-   
-// }
-
 function startDraw() {
+  listenRandomButton();
   const elements = document.querySelectorAll('.element');
   elements.forEach((element) =>
-     element.addEventListener('mouseenter', (e) => {
-        e.target.classList.add('active');
-        
+    element.addEventListener('mouseenter', (e) => {
+      e.target.style.backgroundColor = elementColor;
     })
   );
-   
 }
 
-
+function pickRandomColor() {
+   const red = Math.floor(Math.random(0, 256) * 256);
+   const green = Math.floor(Math.random(0, 256) * 256);
+   const blue = Math.floor(Math.random(0, 256) * 256);
+   console.log(red, green, blue)
+    elementColor = `rgb(${red},${green},${blue})`
+}
 
