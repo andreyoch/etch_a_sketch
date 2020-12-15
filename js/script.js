@@ -1,7 +1,6 @@
 document.addEventListener('DOMContentLoaded', main);
 
 let elementColor = 'black';
-const pickColorArea = document.querySelector('#color-picker');
 
 function main() {
   createGrid(16);
@@ -33,10 +32,12 @@ function listenRandomButton() {
   randomButton.addEventListener('click', pickRandomColor);
 }
 function listenResetButton() {
+  
   const resetButton = document.querySelector('#reset');
+  const pickColorArea = document.querySelector('#color-picker');
 
   resetButton.addEventListener('click', (e) => {
-    elementColor = 'green';
+    elementColor = pickColorArea.value;
     const elements = document.querySelectorAll('.element');
     elements.forEach((element) => (element.style.backgroundColor = 'white'));
   });
@@ -78,7 +79,7 @@ function deleteGrid() {
 }
 
 function setRange() {
-  const gridSizeText = document.querySelector('#grid-size');
+  const gridSizeText = document.querySelector('#grid-size-text');
   const gridSizeRange = document.querySelector('#range');
   gridSizeText.textContent = `Grid size ${gridSizeRange.value} x ${gridSizeRange.value}`;
   deleteGrid();
@@ -86,7 +87,7 @@ function setRange() {
 }
 
 function showRange() {
-  const gridSizeText = document.querySelector('#grid-size');
+  const gridSizeText = document.querySelector('#grid-size-text');
   const gridSizeRange = document.querySelector('#range');
   gridSizeText.textContent = `Grid size  ${gridSizeRange.value} x ${gridSizeRange.value}`;
 }
