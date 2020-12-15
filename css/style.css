@@ -26,19 +26,28 @@ html{
 }
 
 .grid {
-   height: 960px;
+   max-height: 960px;
    border: 1px solid black;
    display: flex;
    flex-direction: column;
+   justify-content: center;
+   margin: 1px;
+   
    
 }
 
 .row {
    display: flex;
+   justify-content: center;
 }
 
 .element {
-   height: 10px;
-   border: 1px solid black;
+   height: 50px;
+   width: 60px;
+}
+
+
+.active {
+   background-color: yellowgreen;
 }
 
