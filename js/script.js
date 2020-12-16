@@ -55,7 +55,7 @@ After double mouse click grid is deactivated and user cant draw,grid listen for 
 function activateGrid() {
   const table = document.querySelector('.grid');
   table.addEventListener('click', startDraw);
-  table.addEventListener('dblclick',deactivateColoring)
+  table.addEventListener('dblclick', deactivateColoring);
 }
 
 function pickRandomColor() {
@@ -84,7 +84,7 @@ function setRange() {
   deleteGrid();
   createGrid(gridSizeRange.value);
 }
-//When user check the range,show actual value of range 
+//When user check the range,show actual value of range
 function showRange() {
   const gridSizeText = document.querySelector('#grid-size-text');
   const gridSizeRange = document.querySelector('#range');
@@ -92,20 +92,20 @@ function showRange() {
 }
 
 function startDraw() {
-  
   const elements = document.querySelectorAll('.element');
   elements.forEach((element) =>
     element.addEventListener('mouseenter', changeColor)
   );
 }
 //Change background color of each item
-function changeColor (e) {
+function changeColor(e) {
   e.target.style.backgroundColor = elementColor;
 }
- //Remove event listener from each item
+//Remove event listener from each item
 function deactivateColoring() {
   const elements = document.querySelectorAll('.element');
-  elements.forEach(element => element.removeEventListener('mouseenter', changeColor));
-  activateGrid()
-  
+  elements.forEach((element) =>
+    element.removeEventListener('mouseenter', changeColor)
+  );
+  activateGrid();
 }
