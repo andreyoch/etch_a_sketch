@@ -63,6 +63,8 @@ function pickRandomColor() {
   const green = Math.floor(Math.random(0, 256) * 256);
   const blue = Math.floor(Math.random(0, 256) * 256);
   elementColor = `rgb(${red},${green},${blue})`;
+  const pickColorArea = document.querySelector('#color-picker');
+  pickColorArea.value = rgbToHex(red, green, blue);
 }
 
 function listenPickColorButton() {
@@ -108,4 +110,13 @@ function deactivateColoring() {
     element.removeEventListener('mouseenter', changeColor)
   );
   activateGrid();
+}
+
+function rgbToHex(r, g, b) {
+  return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+}
+
+function componentToHex(c) {
+  const hex = c.toString(16);
+  return hex.length == 1 ? "0" + hex : hex;
 }
