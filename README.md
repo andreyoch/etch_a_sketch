@@ -34,7 +34,7 @@ To reset grid click on "reset" button
 ![](https://github.com/andreyoch/readme_files/blob/master/etch_a_sketch/how_to_reset_grid.gif)
 ### How to resize grid
 To resize grid click on "range" and choose a size which whant you use as a grid size
-**Warning: if you resize grid you,you loose your previous content**
-![](https://github.com/andreyoch/readme_files/blob/master/etch_a_sketch/how_to_reset_grid.gif)
+**Warning: if you resize grid you, lose your previous content**
+![](https://github.com/andreyoch/readme_files/blob/master/etch_a_sketch/how_to_resize_grid.gif)
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
