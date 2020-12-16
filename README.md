@@ -9,8 +9,8 @@ Etch A Sketch is a mechanical drawing toy,but now you can try this game just in 
 
 ## How to start
 To start click on link in "About" section
+![](https://github.com/andreyoch/readme_files/blob/master/etch_a_sketch/how_to_start.gif)
 
-https://github.com/andreyoch/readme_files/blob/master/etch_a_sketch/how_to_start.gif
 
 
 ## How to use
