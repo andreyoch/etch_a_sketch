@@ -5,8 +5,8 @@ let elementColor = 'black';
 function main() {
   createGrid(16);
   listenButtons();
-  const range = document.querySelector('#range');
-  range.value = 16;
+  const gridRange = document.querySelector('#range');
+  gridRange.value = 16;
 }
 
 function createGrid(greedSize) {
@@ -17,7 +17,7 @@ function createGrid(greedSize) {
     element.classList.add('element');
     table.append(element);
   }
-  startDraw();
+  activateGrid();
 }
 
 function listenButtons() {
@@ -32,7 +32,6 @@ function listenRandomButton() {
   randomButton.addEventListener('click', pickRandomColor);
 }
 function listenResetButton() {
-  
   const resetButton = document.querySelector('#reset');
   const pickColorArea = document.querySelector('#color-picker');
 
@@ -50,13 +49,9 @@ function listenEraseButton() {
   });
 }
 
-function startDraw() {
-  const elements = document.querySelectorAll('.element');
-  elements.forEach((element) =>
-    element.addEventListener('mouseenter', (e) => {
-      e.target.style.backgroundColor = elementColor;
-    })
-  );
+function activateGrid() {
+  const table = document.querySelector('.grid');
+  table.addEventListener('click', startDraw);
 }
 
 function pickRandomColor() {
@@ -91,3 +86,17 @@ function showRange() {
   const gridSizeRange = document.querySelector('#range');
   gridSizeText.textContent = `Grid size  ${gridSizeRange.value} x ${gridSizeRange.value}`;
 }
+
+function startDraw() {
+  const elements = document.querySelectorAll('.element');
+  elements.forEach((element) =>
+    element.addEventListener('mouseenter', (e) => {
+      e.target.style.backgroundColor = elementColor;
+    })
+  );
+}
+
+// function deactivateGrid() {
+//   const table = document.querySelector('.grid');
+//   table.removeEventListener('click');
+// }
