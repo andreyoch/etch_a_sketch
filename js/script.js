@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', main);
-
+//Initial color to draw
 let elementColor = 'black';
 
 function main() {
@@ -39,6 +39,7 @@ function listenResetButton() {
     elementColor = pickColorArea.value;
     const elements = document.querySelectorAll('.element');
     elements.forEach((element) => (element.style.backgroundColor = 'white'));
+    deactivateColoring();
   });
 }
 
@@ -48,7 +49,9 @@ function listenEraseButton() {
     elementColor = 'white';
   });
 }
-
+/*After single mouse click,grid is activated and user can draw.
+After double mouse click grid is deactivated and user cant draw,grid listen for single mouse click,to start draw again
+*/
 function activateGrid() {
   const table = document.querySelector('.grid');
   table.addEventListener('click', startDraw);
@@ -73,7 +76,7 @@ function deleteGrid() {
   const elements = document.querySelectorAll('.element');
   elements.forEach((element) => element.remove());
 }
-
+/*When user release range,delete actual grid and create a new grid with size "gridSizeRange.value"*/
 function setRange() {
   const gridSizeText = document.querySelector('#grid-size-text');
   const gridSizeRange = document.querySelector('#range');
@@ -81,7 +84,7 @@ function setRange() {
   deleteGrid();
   createGrid(gridSizeRange.value);
 }
-
+//When user check the range,show actual value of range 
 function showRange() {
   const gridSizeText = document.querySelector('#grid-size-text');
   const gridSizeRange = document.querySelector('#range');
@@ -95,11 +98,11 @@ function startDraw() {
     element.addEventListener('mouseenter', changeColor)
   );
 }
-//Change each color
+//Change background color of each item
 function changeColor (e) {
   e.target.style.backgroundColor = elementColor;
 }
- 
+ //Remove event listener from each item
 function deactivateColoring() {
   const elements = document.querySelectorAll('.element');
   elements.forEach(element => element.removeEventListener('mouseenter', changeColor));
