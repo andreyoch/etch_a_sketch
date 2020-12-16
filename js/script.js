@@ -19,7 +19,7 @@ function createGrid(greedSize) {
   }
   activateGrid();
 }
-
+//Listen to click on all buttons
 function listenButtons() {
   listenRandomButton();
   listenResetButton();
@@ -52,6 +52,7 @@ function listenEraseButton() {
 function activateGrid() {
   const table = document.querySelector('.grid');
   table.addEventListener('click', startDraw);
+  table.addEventListener('dblclick',deactivateColoring)
 }
 
 function pickRandomColor() {
@@ -88,15 +89,20 @@ function showRange() {
 }
 
 function startDraw() {
+  
   const elements = document.querySelectorAll('.element');
   elements.forEach((element) =>
-    element.addEventListener('mouseenter', (e) => {
-      e.target.style.backgroundColor = elementColor;
-    })
+    element.addEventListener('mouseenter', changeColor)
   );
 }
-
-// function deactivateGrid() {
-//   const table = document.querySelector('.grid');
-//   table.removeEventListener('click');
-// }
+//Change each color
+function changeColor (e) {
+  e.target.style.backgroundColor = elementColor;
+}
+ 
+function deactivateColoring() {
+  const elements = document.querySelectorAll('.element');
+  elements.forEach(element => element.removeEventListener('mouseenter', changeColor));
+  activateGrid()
+  
+}
